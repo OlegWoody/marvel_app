@@ -6,7 +6,7 @@ import MarvelService from '../../services/MarvelServices'
 import Spinner from '../spinner/Spinner'
 import ErrorMessage from '../errorMessage/ErrorMessage'
 
-const CharInfo = (props) =>{
+const CharInfo = ({selectForCommonPage, selectedId}) =>{
     // const marvelService = new MarvelService()
     const [char, setChar] = useState({})
     // const [loading, setLoading] = useState(false)
@@ -17,13 +17,13 @@ const CharInfo = (props) =>{
     
 
     useEffect(()=>{
-        if(props.selectedId !== ""){
-            onCharLoad(props.selectedId)
+        if(selectedId !== ""){
+            onCharLoad(selectedId)
             // setError(false)
             setSelected(true)
             // setSelected(false)
         }
-    }, [props.selectedId])
+    }, [selectedId])
 
     const onCharLoad = (selected) =>{
         // setLoading(true)
@@ -49,11 +49,11 @@ const CharInfo = (props) =>{
                     <div>
                         <div className="char__info-name">{name}</div>
                         <div className="char__btns">
-                            <a href={homepage} className="button button__main">
-                                <div className="inner">homepage</div>
-                            </a>
-                            <a href={wiki} className="button button__secondary">
-                                <div className="inner">Wiki</div>
+                            <a 
+                            // href={wiki}
+                            onClick={()=>selectForCommonPage(id)}
+                             className="button button__secondary">
+                                <div className="inner">Details</div>
                             </a>
                         </div>
                     </div>

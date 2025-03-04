@@ -4,7 +4,7 @@ import MarvelService from '../../services/MarvelServices';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 
-const Search = () => {
+const Search = ({selectForCommonPage}) => {
     const [char, setChar]=useState(null)
     const [required, setRequired]=useState(false)
     const {loading, error, getCharactersByName} = MarvelService()
@@ -38,13 +38,13 @@ const Search = () => {
     };
     
 
-    const Done = ({name}) =>{
-        console.log(name)
+    const Done = ({name, id}) =>{
+        console.log(id)
         if (name) {
         return (
             <div className="char__search-result-done">
                 "There is! Visit "{name}" page?"
-                <button className="button button__secondary">
+                <button onClick={()=>{selectForCommonPage(id)}} className="button button__secondary">
                     <div className="inner">To page</div>
                 </button>
             </div>
@@ -66,7 +66,7 @@ const Search = () => {
         )
     }
 
-    const content = !loading && char ? <Done name={char.name} /> : required ? <Empty /> : null;
+    const content = !loading && char ? <Done name={char.name} id={char.id} /> : required ? <Empty /> : null;
 
     return (
         <div className="char__search">

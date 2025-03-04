@@ -26,6 +26,9 @@
         line-height: 32px;
         color: $main-color;
         margin-top: 25px;
+        &-text{
+            color: black;
+        }
     }
     &__back {
         justify-self: end;

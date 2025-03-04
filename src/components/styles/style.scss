@@ -57,6 +57,15 @@ input::-webkit-inner-spin-button {
         right: -174px;
         bottom: -70px;
         z-index: -1;
+        &-own{
+            z-index: -1;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 1920px;
+            height: 1080px;
+        }
     }
 }
 

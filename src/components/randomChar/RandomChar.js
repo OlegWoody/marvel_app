@@ -15,6 +15,7 @@ const RandomChar = () =>{
     const updateChar = (id) =>{
         getCharactersById(id)
             .then(onCharLoaded)
+            // .then((res)=>console.log(res))
             .catch(()=>{
                 console.log('Error')
             })

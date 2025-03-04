@@ -4,11 +4,12 @@ import MarvelService from '../../services/MarvelServices';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 
-const ComicsList = () => {
+const ComicsList = ({selectForCommonPage}) => {
     const [comics, setComics] = useState([])
     const [firstLoading, setFirstLoading] = useState(true)
     const {loading, error, getAllComics}=MarvelService()
     const [offSet, setOffSet] = useState(210)
+    const type='comics';
 
     useEffect(()=>{
         renderedItem.current = [];
@@ -50,7 +51,7 @@ const ComicsList = () => {
                 >
                     
 
-                    <a href="#">
+                    <a onClick={()=>{selectForCommonPage(comic.id, type)}}>
                         <img src={comic.thumbnail} alt={comic.name} className="comics__item-img"/>
                         <div className="comics__item-name">{comic.name}</div>
                         <div className="comics__item-price">{comic.price}</div>

@@ -53,6 +53,7 @@ input::-webkit-inner-spin-button {
     &__header {
         display: flex;
         justify-content: space-between;
+        background-color: rgba(255, 255, 255, 0.61);
     }
     &__title {
         font-weight: bold;

@@ -26,9 +26,15 @@ const MarvelService = () =>{
             return res.data.results.map(_transformChar);
         }
 
-    const getCharactersById = async (id) =>{
-            const res = await request(`${_apiBase}/characters/${id}?${_apiKey}`)
-            return _transformChar(res.data.results[0])
+    const getCharactersById = async (id, type='characters') =>{
+            const res = await request(`${_apiBase}/${type}/${id}?${_apiKey}`)
+            if(type==='characters'){
+                return _transformChar(res.data.results[0])
+            } else if(type==='comics'){
+                return _transformComics(res.data.results[0])
+            } else {
+                return
+            }
         }
 
     const getCharactersByName = async (name) =>{
@@ -50,17 +56,20 @@ const MarvelService = () =>{
         // if (char.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" || char.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708") {
         //     objStyle = { objectFit: "fill" };
         // } 
-        
+        console.log(comics)
             return{
                 id: comics.id,
                 name: comics.title,
                 series: comics.series.name,
                 description: comics.description,
+                // language: comics.language,
+                fullDescription: comics.description.length > 0 ? comics.description : "Here no descr",
                 // comics.description.length > 0 ? (comics.description.length > 170 ? comics.description.substring(0, 170) + "..." : comics.description) : "Here no descr",
                 // fullDescription: comics.description.length > 0 ? comics.description : "Here no descr",
                 thumbnail: `${comics.thumbnail.path}.${comics.thumbnail.extension}`,
                 // thumbnail: `${comics.imgages[0].path}.${comics.imgages[0].extension}`?????,
-                price: typeof comics.prices[0].price === 'number' ? comics.prices[0].price + " $" : comics.prices[0].price,
+                printPrice: typeof comics.prices[0].price === 'number' ? comics.prices[0].price + " $" : comics.prices[0].price,
+                digitalPrice: comics.prices[1] ? typeof comics.prices[1].price === 'number' ? comics.prices[1].price + " $" : comics.prices[1].price: "Not available",
                 pageCount: comics.pageCount,
                 detail: comics.urls[0].url
                 // objStyle: objStyle
