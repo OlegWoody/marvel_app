@@ -1,25 +1,14 @@
 import vision from '../../resources/img/vision.png'
-import backg from '../../resources/img/own_bg.webp'
 import AppHeader from '../appHeader/AppHeader';
-// import RandomChar from '../randomChar/RandomChar';
-// import CharList from '../charList/CharList';
-// import CharInfo from '../charInfo/CharInfo';
-// import ErrorBoundary from '../errorBoundary/ErrorBoundary';
-// import Search from "../search/Search";
 import ComicsList from '../comicsList/ComicsList';
 import { useState } from "react";
 import CommonPage from '../commonPage/CommonPage';
-import { Route, Router, BrowserRouter } from 'react-router';
+import { Route, Routes, NavLink } from 'react-router';
 import MainPage from '../pages/MainPage';
+import futureBanner from '../../resources/img/future_banner.png'
 
 function App() {
-
-  // const [selectedChar, setSelectedChar] = useState('')
   const [selectedElem, setSelectedElem] = useState(null)
-
-  // const selectForInfo = (id) =>{
-  //     setSelectedChar(id)
-  // }
 
   const selectForCommonPage = (id, type='characters') =>{
     setSelectedElem({id, type})
@@ -27,26 +16,19 @@ function App() {
 
   return (
     <div className="app">
-      <BrowserRouter>
-        <AppHeader/>
+        <Routes>
+          <Route path='/' element={<AppHeader />} />
+          <Route path='/comics' element={<AppHeader />} />
+          <Route path='/:type/:id' element={<img src={futureBanner}></img>}/>
+        </Routes>
         <main>
-          <MainPage selectForCommonPage={selectForCommonPage}/>
-          {/* <RandomChar/>
-        <div className="char__content">
-              <CharList selectForInfo={selectForInfo}/>
-              <ErrorBoundary>
-                <div>
-                  <CharInfo selectedId={selectedChar} selectForCommonPage={selectForCommonPage}/>
-                  <Search selectForCommonPage={selectForCommonPage}/> 
-                </div>
-              </ErrorBoundary>
-        </div> */}
-        <ComicsList selectForCommonPage={selectForCommonPage}/>
-        <CommonPage selectedElem={selectedElem}/>
-        {/* <img className="bg-decoration-own" src={backg}/> */}
+        <Routes>
+          <Route path='/' element={<MainPage selectForCommonPage={selectForCommonPage}/>}/>
+          <Route path='/comics'  element={<ComicsList selectForCommonPage={selectForCommonPage}/>}/>
+          <Route path='/:type/:id' element={<CommonPage selectedElem={selectedElem}/>}/>
+        </Routes>
         <img className="bg-decoration" src={vision} alt="vision"/>
       </main>
-      </BrowserRouter>
     </div>
   );
 }

@@ -6,6 +6,12 @@
     grid-template-columns: 293px 550px auto;
     column-gap: 50px;
     align-items: start;
+    &_banner{
+        width: 1100px;
+        height: 95px;
+        margin: 0;
+        padding-top: 0;
+    }
     &__img {
         width: 293px;
         height: 450px;

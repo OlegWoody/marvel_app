@@ -72,9 +72,16 @@ input::-webkit-inner-spin-button {
             line-height: 32px;
             li {
                 margin: 0 8px;
+                a{
+                    &.active{
+                        color: $main-color;
+                        transform: translateY(-5px);
+                    }
+                }
                 a:hover {
                     color: $main-color;
                 }
+
             }
         }
     }

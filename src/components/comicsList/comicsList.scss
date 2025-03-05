@@ -12,7 +12,42 @@
     }
     &__item {
         transition: 0.3s transform;
-        background-color:azure;
+        background-color:rgb(39, 165, 165);
+        a{
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        &-sub{
+            margin-top: auto;
+            display: grid;
+            grid-template-columns: repeat((auto-fill, 100px));
+            justify-content: space-around;
+            // align-items:end;
+            justify-items: stretch;
+            background-color: $dark;
+            &-price {
+                margin: 5px;
+                // margin: 5px;
+                // padding: 5px;
+                font-weight: bold;
+                font-size: 14px;
+                line-height: 18px;
+                color: rgba(0, 0, 0, 0.6);
+                text-transform: uppercase;
+                align-self: center;
+                color: orange
+            }
+            &-data{
+                margin: 5px;
+                text-align: end;
+                align-self: center;
+                font-weight: bold;
+                font-size: 14px;
+                line-height: 18px;
+                color: orange
+            }
+        }
         &-img {
             box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
             width: 225px;
@@ -26,16 +61,14 @@
             font-size: 14px;
             line-height: 18px;
         }
-        &-price {
-            margin: 10px;
-            // margin: 5px;
-            // padding: 5px;
-            font-weight: bold;
-            font-size: 14px;
-            line-height: 18px;
-            color: rgba(0, 0, 0, 0.6);
-            text-transform: uppercase;
-        }
+        // &-price {
+        //     margin: 10px;
+        //     font-weight: bold;
+        //     font-size: 14px;
+        //     line-height: 18px;
+        //     color: rgba(0, 0, 0, 0.6);
+        //     text-transform: uppercase;
+        // }
         &-selected{
             transform: translateY(-8px);
             box-shadow: 0 5px 20px $main-color;
@@ -43,6 +76,7 @@
         &:hover {
             transform: translateY(-5px);
             box-shadow: 0 5px 20px $main-color;
+            opacity: 0.95;
         }
     }
     

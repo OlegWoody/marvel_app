@@ -5,6 +5,7 @@ import { useState, useCallback, useEffect } from 'react'
 import MarvelService from '../../services/MarvelServices'
 import Spinner from '../spinner/Spinner'
 import ErrorMessage from '../errorMessage/ErrorMessage'
+import { Link } from 'react-router'
 
 const CharInfo = ({selectForCommonPage, selectedId}) =>{
     // const marvelService = new MarvelService()
@@ -13,6 +14,7 @@ const CharInfo = ({selectForCommonPage, selectedId}) =>{
     // const [error, setError] = useState(false)
     const [selected, setSelected] = useState(false)
     const {getAllCharacters, getCharactersById, loading, error} = MarvelService()
+    const type='characters'
 
     
 
@@ -49,12 +51,13 @@ const CharInfo = ({selectForCommonPage, selectedId}) =>{
                     <div>
                         <div className="char__info-name">{name}</div>
                         <div className="char__btns">
-                            <a 
+                            <Link
+                            to={`/${type}/${id}`} 
                             // href={wiki}
                             onClick={()=>selectForCommonPage(id)}
                              className="button button__secondary">
                                 <div className="inner">Details</div>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

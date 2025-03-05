@@ -5,7 +5,7 @@ import MarvelService from "../../services/MarvelServices";
 import Spinner from "../spinner/Spinner";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 
-const RandomChar = () =>{
+const RandomChar = (props) =>{
     const [state, setState]=useState({})
     const {getCharactersById, loading, error} = MarvelService()
 
@@ -32,7 +32,7 @@ const RandomChar = () =>{
 
     const errorMessage = error ? <ErrorMessage/> : null;
     const spin = (loading && !error) ? <Spinner/> : null;
-    const content = !(loading || error) ? <View char={state}/> : null;
+    const content = !(loading || error) ? <View char={state} select={props}/> : null;
 
     return(
     <div className="randomchar">
@@ -56,7 +56,7 @@ const RandomChar = () =>{
     )
 }
 
-const View = ({char:{name, description, thumbnail, homepage, wiki}}) =>{
+const View = ({char:{id, name, description, thumbnail, homepage, wiki}, select:{selectForInfo, selectForCommonPage}}) =>{
     const objFit = thumbnail==="http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" ? "fill" : "cover";
     // const {name, description, thumbnail, homepage, wiki} = state
     return(
@@ -67,14 +67,14 @@ const View = ({char:{name, description, thumbnail, homepage, wiki}}) =>{
             <p className="randomchar__descr">
                 {description}
             </p>
-            <div className="randomchar__btns">
-                <a href={homepage} className="button button__main">
-                    <div className="inner">homepage</div>
+            {/* <div className="randomchar__btns"> */}
+                <a onClick={()=>{selectForInfo(id)}} className="button button__main">
+                    <div className="inner">more info</div>
                 </a>
-                <a href={wiki} className="button button__secondary">
+                {/* <a onClick={()=>{selectForCommonPage(id)}} className="button button__secondary">
                     <div className="inner">Wiki</div>
-                </a>
-            </div>
+                </a> */}
+            {/* </div> */}
         </div>
     </div>
     )

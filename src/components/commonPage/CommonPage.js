@@ -4,6 +4,8 @@ import MarvelService from '../../services/MarvelServices';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import Spinner from '../spinner/Spinner';
 import xMen from '../../resources/img/x-men.png';
+import hero_banner from '../../resources/img/hero_banner.png'
+import { Link } from 'react-router';
 
 
 const CommonPage = ({selectedElem}) => {
@@ -42,7 +44,7 @@ const CommonPage = ({selectedElem}) => {
                         <div className="common-page__price"><span className="common-page__price-text">Printed version:</span> {elem.printPrice}</div>
                         <div className="common-page__price"><span className="common-page__price-text">Digital version</span>: {elem.digitalPrice}</div>
                     </div>
-                    <a href="#" className="common-page__back">Back to all</a>
+                    <Link to={`/${type}`} className="common-page__back">Back to all</Link>
                 </>
             )
         } else if(type==='characters'){
@@ -56,7 +58,7 @@ const CommonPage = ({selectedElem}) => {
                         {/* <p className="common-page__descr">Language: en-us</p> */}
                         {/* <div className="common-page__price">9.99$</div> */}
                     </div>
-                    <a href="#" className="common-page__back">Back to all</a>
+                    <Link to={`/`} href="#" className="common-page__back">Back to all</Link>
                 </>
             )
         }

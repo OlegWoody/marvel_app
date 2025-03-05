@@ -3,6 +3,7 @@ import { useEffect, useState, useCallback, useRef, useMemo } from 'react';
 import MarvelService from '../../services/MarvelServices';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
+import { Link } from 'react-router';
 
 const ComicsList = ({selectForCommonPage}) => {
     const [comics, setComics] = useState([])
@@ -43,20 +44,17 @@ const ComicsList = ({selectForCommonPage}) => {
         return comics.map((comic, index)=>{
             const firstRenderedItem = renderedItem.current[index] ? '' : " fade-in";
             return(
-                <li 
-                key={index}
-                ref={(e)=>myRef(e, index)}
-                className={`comics__item${firstRenderedItem}`}
-                // ЗАМЕТКА ДЛЯ СЕБЯ. НЕ ЗАБУДЬ КЛАСС ПРОВЕРИТЬ БЛИН
-                >
-                    
-
-                    <a onClick={()=>{selectForCommonPage(comic.id, type)}}>
-                        <img src={comic.thumbnail} alt={comic.name} className="comics__item-img"/>
-                        <div className="comics__item-name">{comic.name}</div>
-                        <div className="comics__item-price">{comic.price}</div>
-                    </a>
-
+                <li key={index} ref={(e)=>myRef(e, index)}  className={`comics__item${firstRenderedItem}`}>
+                    <Link to={`/${type}/${comic.id}`} onClick={()=>{selectForCommonPage(comic.id, type)}}>
+                        <div className="comics__item-own">
+                            <img src={comic.thumbnail} alt={comic.name} className="comics__item-img"/>
+                            <div className="comics__item-name">{comic.name}</div>
+                        </div>
+                        <div className="comics__item-sub">
+                            <div className="comics__item-sub-price">{comic.printPrice}</div>
+                            <data className="comics__item-sub-data">{comic.modified}</data>
+                        </div>
+                    </Link>
                 </li>
             )
         }, [])

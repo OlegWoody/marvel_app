@@ -12,10 +12,9 @@ const MainPage = ({selectForCommonPage}) =>{
         setSelectedChar(id)
     }
   
-
     return (
         <>
-          <RandomChar/>
+          <RandomChar selectForInfo={selectForInfo} selectForCommonPage={selectForCommonPage}/>
             <div className="char__content">
                 <CharList selectForInfo={selectForInfo}/>
                 <ErrorBoundary>

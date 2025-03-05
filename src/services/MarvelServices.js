@@ -48,20 +48,23 @@ const MarvelService = () =>{
 
     const getAllComics = async (offSet=_baseOffSet) =>{
         const res = await request(`${_apiBase}/comics?limit=8&offset=${offSet}&${_apiKey}`);
+        console.log(res)
         return res.data.results.map(_transformComics);
     }
 
     const _transformComics= (comics) =>{
+    const date = new Date(comics.modified);
+    const formattedModified = date.toLocaleDateString('en-CA');  
         // let objStyle = { objectFit: "cover" };
         // if (char.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" || char.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708") {
         //     objStyle = { objectFit: "fill" };
         // } 
-        console.log(comics)
             return{
                 id: comics.id,
                 name: comics.title,
                 series: comics.series.name,
                 description: comics.description,
+                modified: formattedModified,
                 // language: comics.language,
                 fullDescription: comics.description.length > 0 ? comics.description : "Here no descr",
                 // comics.description.length > 0 ? (comics.description.length > 170 ? comics.description.substring(0, 170) + "..." : comics.description) : "Here no descr",
