@@ -6,7 +6,7 @@ const AppHeader = () => {
   return (
       <header className="app__header">
         <h1 className="app__title">
-            <NavLink to="/">
+            <NavLink to="/marvel_app">
                 <span>Marvel </span>
                  information portal
             </NavLink>
@@ -14,7 +14,7 @@ const AppHeader = () => {
         <nav className="app__menu">
             <ul>
                 <li >
-                    <NavLink to="/">Characters</NavLink>
+                    <NavLink to="/marvel_app">Characters</NavLink>
                 </li>
                 /
                 <li >

@@ -58,7 +58,7 @@ const CommonPage = ({selectedElem}) => {
                         {/* <p className="common-page__descr">Language: en-us</p> */}
                         {/* <div className="common-page__price">9.99$</div> */}
                     </div>
-                    <Link to={`/`} href="#" className="common-page__back">Back to all</Link>
+                    <Link to={`/marvel_app`} className="common-page__back">Back to all</Link>
                 </>
             )
         }

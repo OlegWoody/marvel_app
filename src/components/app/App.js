@@ -17,13 +17,13 @@ function App() {
   return (
     <div className="app">
         <Routes>
-          <Route path='/' element={<AppHeader />} />
+          <Route path='/marvel_app' element={<AppHeader />} />
           <Route path='/comics' element={<AppHeader />} />
           <Route path='/:type/:id' element={<img src={futureBanner}></img>}/>
         </Routes>
         <main>
         <Routes>
-          <Route path='/' element={<MainPage selectForCommonPage={selectForCommonPage}/>}/>
+          <Route path='/marvel_app' element={<MainPage selectForCommonPage={selectForCommonPage}/>}/>
           <Route path='/comics'  element={<ComicsList selectForCommonPage={selectForCommonPage}/>}/>
           <Route path='/:type/:id' element={<CommonPage selectedElem={selectedElem}/>}/>
         </Routes>
