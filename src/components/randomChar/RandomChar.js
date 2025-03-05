@@ -47,7 +47,7 @@ const RandomChar = (props) =>{
             <p className="randomchar__title">
                 Or choose another one
             </p>
-            <button onClick={generatedId} className="button button__main">
+            <button onClick={generatedId} className="button button__main button__transparent">
                 <div className="inner">try it</div>
             </button>
             <img src={mjolnir} alt="mjolnir" className="randomchar__decoration"/>
@@ -68,7 +68,7 @@ const View = ({char:{id, name, description, thumbnail, homepage, wiki}, select:{
                 {description}
             </p>
             {/* <div className="randomchar__btns"> */}
-                <a onClick={()=>{selectForInfo(id)}} className="button button__main">
+                <a onClick={()=>{selectForInfo(id)}} className="button button__main ">
                     <div className="inner">more info</div>
                 </a>
                 {/* <a onClick={()=>{selectForCommonPage(id)}} className="button button__secondary">

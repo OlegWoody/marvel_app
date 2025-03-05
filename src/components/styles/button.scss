@@ -6,89 +6,178 @@
     text-align: center;
     text-transform: uppercase;
     font-size: 14px;
-    transition: 0.3s transform;
+    transition: 0.3s transform, 0.3s background-color; /* Добавил плавное изменение фона */
     border: none;
     background-color: transparent;
     cursor: pointer;
+    border-radius: 10px; /* Сглаживаем углы для современного вида */
+    
     &__long {
         display: block;
         width: 170px;
         margin: 45px auto 0 auto;
     }
+
     .inner {
         position: relative;
-        background-color: $main-color;
+        background-color: $main-orange;
         line-height: 18px;
-        padding: 0 18px;
-        transition: none;
-        &::before {
-            border-color: $main-color transparent;
-            border-style: solid;
-            border-width: 0 0 10px 10px;
-            content: "";
-            display: block;
-            position: absolute;
-            left: 0;
-            top: -10px;
-            transition: none;
-        }
+        padding: 8px 18px;
+        transition: all 0.3s ease;
+        // border: solid 1px gray;
+
+    
+        &::before,
         &::after {
-            border-color: $main-color transparent;
-            border-style: solid;
-            border-width: 0 0 10px 10px;
             content: "";
-            display: block;
             position: absolute;
+            width: 100%;
+            height: 5px;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+    
+        &::before {
+            top: -3px;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            left: 0;
+            transform: scaleX(0); 
+        }
+    
+        &::after {
+            bottom: -3px;
+            border-bottom-left-radius: 3px;
+            border-bottom-right-radius: 3px;
+            box-shadow: 0 4px 12px rgba(252, 252, 252, 0.671);
             right: 0;
-            bottom: -10px;
-            transform: rotate(180deg);
-            transition: none;
+            transform: scaleX(0); 
+        }
+    
+        &:hover::before,
+        &:hover::after {
+            transform: scaleX(1);
+            background-color: $main-orange; 
+          
+        }
+        &:hover::after{
+            box-shadow: 0 3px 30px rgb(199, 115, 5); 
         }
     }
-    &__main, &__secondary {
+    
+    &__main {
+        .inner {
+            border-radius: 6px; 
+            &:hover{
+                border-radius: 0px; 
+            }
+            &::before {
+                border-color: $grey transparent;
+            }
+
+            &::after {
+                border-color: $grey transparent;
+            }
+            &:hover::before,
+            &:hover::after {
+                background-color: $main-orange; 
+            }
+        }
+    }
+
+    &__main {
         &:hover {
-            color: #fff;
+            // transform: translateY(-5px); ????
+            // background-color: $main-orange; /* При наведении меняем фон */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
     }
+    
     &__secondary {
         .inner {
             background-color: $grey;
+            // color: white;
+            &:hover {
+                color: $main-orange;
+            }
             &::before {
                 border-color: $grey transparent;
-                transition: none;
             }
+
             &::after {
-                border-color: $grey transparent; 
-                transition: none;
+                border-color: $grey transparent;
+            }
+            &:hover::before,
+            &:hover::after {
+                background-color: $grey; 
+            }
+        }
+
+    }
+
+    &__secondary { 
+        &:hover {
+            border-radius: 3px;
+            // transform: translateY(-5px); ????
+            background-color: $grey; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+    }
+
+    &__transparent{
+        color: $main-orange;
+        text-shadow: 0.5px 0.5px 0.5px $main-orange;
+        .inner{
+            background-color: transparent;
+            border: 3px solid $main-orange;
+            &:hover{
+                border-color:  $grey;
+                // box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            }
+            // background-color: $grey;
+            &::before,&::after {
+                border-color: $grey transparent;
+            }
+
+            &:hover::before{
+                background-color: $grey; 
+            }
+            &:hover::after {
+                background-color: $grey; 
+                box-shadow: 0 30px 30px rgba(252, 252, 252, 0.322);
             }
         }
     }
+
+    &__transparent{
+        &:hover {
+            background-color: $grey;
+            border-radius: 3px;
+        }
+    }
+
     &::before {
         content: '';
         display: block;
-        height: 10px;
+        height: 5px;
         margin-left: 10px;
         transition: none;
-
     }
+
     &::after {
         content: '';
         display: block;
-        height: 10px;
+        height: 5px;
         margin-right: 10px;
         transition: none;
+    }
 
-    }
-    &.button__main::before, &.button__main::after {
-        background-color: $main-color;
-    }
-    &.button__secondary::before, &.button__secondary::after {
-        background-color: $grey;
-    }
     &:hover {
-        transform: translateY(-5px);
+        // transform: translateY(-5px); ???
     }
-    &:disabled{
+
+    &:disabled {
         filter: grayscale(.5);
+        cursor: not-allowed; /* Поменял курсор на "недоступен" */
     }
 }

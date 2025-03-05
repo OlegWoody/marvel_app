@@ -48,17 +48,22 @@ input::-webkit-inner-spin-button {
 }
 
 .app {
+    background-color: rgba(0, 0, 0, 0.356);
     width: 1100px;
     margin: 0 auto;
     padding: 50px 0 50px 0;
     position: relative;
     .bg-decoration {
-        position: absolute;
-        right: -174px;
-        bottom: -70px;
+        width: 1100px;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        // position: absolute;
+        // right: -174px;
+        // bottom: -70px;
         z-index: -1;
         &-own{
-            z-index: -1;
+            z-index: -1000;
             position: fixed;
             left: 50%;
             top: 50%;

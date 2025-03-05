@@ -65,16 +65,16 @@ const CommonPage = ({selectedElem}) => {
     }
 
     const content = elem && !(loading && error) ? <View elem={elem} type={type}/> : null
+    const err = error ? <><Link to={`/marvel_app`} className="common-page__back">Back to all</Link><ErrorMessage/></>:null
     return (
         <div>
             <div className="common-page">
                 {/* {loading?<Spinner/>:null}
                 {error?<ErrorMessage/>:null} */}
                 {content}
-                
             </div>
             {loading?<Spinner/>:null}
-            {error?<ErrorMessage/>:null}
+            {err}
         </div>
     )
 }

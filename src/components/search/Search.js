@@ -3,11 +3,13 @@ import { useState, useCallback } from 'react';
 import MarvelService from '../../services/MarvelServices';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
+import { Link } from 'react-router';
 
 const Search = ({selectForCommonPage}) => {
     const [char, setChar]=useState(null)
     const [required, setRequired]=useState(false)
     const {loading, error, getCharactersByName} = MarvelService()
+    const type='characters'
 
     const startSearch = (name) =>{
         setChar(null)
@@ -44,9 +46,9 @@ const Search = ({selectForCommonPage}) => {
         return (
             <div className="char__search-result-done">
                 "There is! Visit "{name}" page?"
-                <button onClick={()=>{selectForCommonPage(id)}} className="button button__secondary">
+                <Link to={`/${type}/${id}`} onClick={()=>{selectForCommonPage(id)}} className="button button__secondary">
                     <div className="inner">To page</div>
-                </button>
+                </Link>
             </div>
         )
     } else {
@@ -82,7 +84,7 @@ const Search = ({selectForCommonPage}) => {
                         className="char__name-input" 
                         placeholder="Enter name" 
                     />
-                    <button type="submit" className="button">
+                    <button type="submit" className="button button__main">
                         <div className="inner">Find</div>
                     </button>
                 </div>

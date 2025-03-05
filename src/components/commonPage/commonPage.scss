@@ -1,6 +1,11 @@
 @use "../styles/variables" as *;
 
 .common-page {
+    // background-color: rgba(255, 255, 255, 0.356);
+    background-color: rgba(0, 0, 0, 0.356);
+    color: rgb(255, 81, 0);
+    padding: 10px;
+    padding-right: 20px;
     margin-top: 50px;
     display: grid;
     grid-template-columns: 293px 550px auto;
@@ -37,6 +42,7 @@
         }
     }
     &__back {
+        display: block;
         justify-self: end;
         font-weight: bold;
         font-size: 18px;

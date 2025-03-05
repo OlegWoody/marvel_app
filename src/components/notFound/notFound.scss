@@ -1,0 +1,29 @@
+@use "../styles/variables" as *;
+
+.not-found-page {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    // margin-top: 50px;
+    // column-gap: 50px;
+    align-items: start;
+
+    &__title {
+        text-align: center;
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 29px;
+    }
+
+    &__back-button {
+        // grid-column: 2;
+        // grid-row: 1;
+        justify-self: end;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 24px;
+
+        &:hover {
+            color: $main-color;
+        }
+    }
+}
