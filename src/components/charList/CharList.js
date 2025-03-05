@@ -4,11 +4,11 @@ import { useState, useEffect, memo, useRef } from 'react';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage'
 
-const CharList = (props) => {
+const CharList = ({selectForInfo, selectedChar}) => {
     const [char, setChar] = useState([])
     const [firstLoading, setFirstLoading] = useState(false)
     const [offSet, setOffSet] = useState(210)
-    const [activeChar, setActiveChar] = useState(null)
+    // const [activeChar, setActiveChar] = useState(null)
     const { getAllCharacters, loading, error } = MarvelService()
 
     const currentRef = useRef([])
@@ -39,13 +39,13 @@ const CharList = (props) => {
     }
 
     const onClickChar = (charId, index) => {
-        props.selectForInfo(charId)
+        selectForInfo(charId)
         currentRef.current[index].focus()
         currentRef.current[index].scrollIntoView({
             behavior: "smooth",
             block: "start",
         });
-        setActiveChar(charId)
+        // setActiveChar(charId)
     }
 
     const myRef = (e, index) => {
@@ -58,7 +58,7 @@ const CharList = (props) => {
         return char.map((char, index) => {
             const animation = currentRef.current[index] ? "" : "char__item_animate"
             return (
-                <li className={activeChar === char.id ? "char__item char__item_selected" : `char__item ${animation}`}
+                <li className={selectedChar === char.id ? "char__item char__item_selected" : `char__item ${animation}`}
                     tabIndex={index}
                     ref={(e) => myRef(e, index)}
                     onClick={() => onClickChar(char.id, index)}
