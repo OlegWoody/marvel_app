@@ -10,6 +10,8 @@
     "@testing-library/user-event": "^13.5.0",
     "classnames": "^2.5.1",
     "marvel_app": "file:",
+    "nth-check": ">=2.0.1",
+    "postcss": ">=8.4.31",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-error-boundary": "^5.0.0",
@@ -50,6 +52,6 @@
   },
   "devDependencies": {
     "concurrently": "^9.1.2",
-    "gh-pages": "^3.2.3"
+    "gh-pages": "^5.0.0"
   }
 }
