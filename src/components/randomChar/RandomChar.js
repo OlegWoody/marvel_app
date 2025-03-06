@@ -36,9 +36,9 @@ const RandomChar = (props) =>{
 
     return(
     <div className="randomchar">
-        {errorMessage}
-        {spin}
-        {content}
+            {errorMessage}
+            {spin}
+            {content}
         <div className="randomchar__static">
             <p className="randomchar__title">
                 Random character for today!<br/>
@@ -59,7 +59,7 @@ const RandomChar = (props) =>{
 const View = ({char:{id, name, description, thumbnail, homepage, wiki}, select:{selectForInfo, selectForCommonPage}}) =>{
     const objFit = thumbnail==="http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" ? "fill" : "cover";
     // const {name, description, thumbnail, homepage, wiki} = state
-    return(
+    return(  
     <div className="randomchar__block">
         <img src={thumbnail} alt="Random character" className="randomchar__img" style={{'objectFit':objFit}}/>
         <div className="randomchar__info">

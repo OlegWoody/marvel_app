@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback, useRef, useMemo } from 'react';
 import MarvelService from '../../services/MarvelServices';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const ComicsList = ({selectForCommonPage}) => {
     const [comics, setComics] = useState([])

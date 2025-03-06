@@ -52,6 +52,15 @@ const MarvelService = () =>{
         return res.data.results.map(_transformComics);
     }
 
+    const getComicsByName = async (name) =>{
+        const res = await request(`${_apiBase}/comics?name=${name}&${_apiKey}`)   
+        if(res.data.count >= 1){
+            return _transformComics(res.data.results[0])
+        } else{
+            return res.data.results
+        }
+    }
+
     const _transformComics= (comics) =>{
     const date = new Date(comics.modified);
     const formattedModified = date.toLocaleDateString('en-CA');  
@@ -82,6 +91,7 @@ const MarvelService = () =>{
 
 
     const _transformChar= (char) =>{
+        // console.log(char)
         let objStyle = { objectFit: "cover" };
         if (char.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" || char.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708") {
             objStyle = { objectFit: "fill" };
@@ -90,7 +100,7 @@ const MarvelService = () =>{
             return{
                 id: char.id,
                 name: char.name,
-                description: char.description.length > 0 ? (char.description.length > 170 ? char.description.substring(0, 170) + "..." : char.description) : "Here no descr",
+                description: char.description.length > 0 ? (char.description.length > 150 ? char.description.substring(0, 170) + "..." : char.description) : "Here no descr",
                 fullDescription: char.description.length > 0 ? char.description : "Here no descr",
                 thumbnail: `${char.thumbnail.path}.${char.thumbnail.extension}`,
                 homepage: char.urls[0].url,
@@ -100,7 +110,7 @@ const MarvelService = () =>{
             }
         }
     
-    return {getAllCharacters, getCharactersById, getCharactersByName, getAllComics, loading, error}
+    return {getAllCharacters, getCharactersById, getCharactersByName, getAllComics, loading, error, getComicsByName}
 }
 
 

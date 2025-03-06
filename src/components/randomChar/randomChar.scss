@@ -9,61 +9,86 @@ main {
     grid-template-columns: repeat(2, 50%);
     align-items: center;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
-    background-color: $dark;
+    background-color: $dark-grey-blue;
+    min-height: 260px;
+    max-width: 1100px; 
+    margin: 0 auto; 
+    padding: 20px;
+    .err{
+        width: 200px;
+    }
+
     &__block {
         padding: 40px 35px;
         display: grid;
-        grid-template-columns: 180px auto;
-        column-gap: 30px;
-        background-color: #fcfcfc;
+        grid-template-columns: 180px auto; 
+        gap: 30px; 
+        background-color: $dark-grey-blue;
+        min-height: 260px;
     }
+
     &__img {
-        width: 180px;
-        height: 180px;
+        align-self: center;
+        width: 180px; 
+        height: 180px; 
         object-fit: cover;
     }
+
     &__info {
         display: grid;
-        grid-template-rows: minmax(29px, auto) 90px 38px;
+        grid-template-rows: minmax(29px, auto) minmax(90px, auto) 38px;
         row-gap: 10px;
         padding-top: 3px;
     }
+
     &__name {
         font-weight: bold;
         font-size: 22px;
         line-height: 29px;
         text-transform: uppercase;
+        color: $main-orange;
     }
+
     &__descr {
         font-size: 14px;
         line-height: 18px;
+        width: 250px;
+        height: 90px;
+        color: $main-orange;
+        overflow: hidden; 
+        text-overflow: ellipsis; 
     }
+
     &__btns {
         a:nth-child(1) {
             margin-right: 30px;
         }
     }
+
     &__static {
         padding: 40px 35px;
-        background-color: $dark;
+        background-color: $dark-grey-blue;
         position: relative;
         button {
             margin-top: 13px;
         }
     }
+
     &__title {
         font-weight: bold;
         font-size: 24px;
         line-height: 32px;
         letter-spacing: -0.045em;
-        color: #FFFFFF;
+        color: $main-orange;
         &:nth-child(2) {
-            margin-top: 33px;
+            margin-top: 25px;
         }
     }
+
     &__decoration {
         position: absolute;
         bottom: 14px;
         right: -37px;
     }
 }
+

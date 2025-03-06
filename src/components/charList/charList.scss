@@ -16,14 +16,16 @@
     &__item {
         width: 200px;
         height: 318px;
-        background-color: $dark;
+        background-color: $dark-grey-blue;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, .25);
         padding: 15px;
         cursor: pointer;
         transition: 0.3s transform;
         img {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
+            margin: 10px;
+            border-radius: 20px;
             object-fit: cover;
             transform: translate(-15px, -15px);
         }
@@ -48,7 +50,8 @@
         font-size: 22px;
         line-height: 29px;
         text-transform: uppercase;
-        color: #fff;
+        color: $main-orange;
+        text-align: center;
     }
 
     &__select {

@@ -5,7 +5,7 @@ import ComicsList from '../comicsList/ComicsList';
 import NotFound from '../notFound/NotFound';
 import { useState } from "react";
 import CommonPage from '../commonPage/CommonPage';
-import { Route, Routes, NavLink } from 'react-router';
+import { Route, Routes } from 'react-router-dom';
 import MainPage from '../pages/MainPage';
 import futureBanner from '../../resources/img/future_banner.png'
 
@@ -41,7 +41,7 @@ function App() {
           <Route path='/:type/:id' element={<CommonPage selectedElem={selectedElem}/>}/>
           <Route path='*' element={<NotFound />}/>
         </Routes>
-        
+
         <img className="bg-decoration-own" src={back} alt="vision"/>
         {/* <img className="bg-decoration" src={vision} alt="vision"/> */}
       </main>

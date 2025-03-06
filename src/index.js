@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './components/styles/style.scss';
 import App from './components/app/App';
-import { BrowserRouter } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 
 // background: url('../../resources/img/own_bg.webp') no-repeat center/cover;
 

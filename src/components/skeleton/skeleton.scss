@@ -1,3 +1,4 @@
+@use '../styles/variables.scss' as *;
 
 .skeleton {
     &__header {
@@ -6,21 +7,29 @@
         column-gap: 10px;
         align-items: center;
     }
+    
     &__circle {
         width: 40px;
         height: 40px;
-        background-color: #C4C4C4;
-        border-radius: 100%;
+        background-color: $main-orange;
+        border-radius: 50%; /* Полностью круглый элемент */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
+
     &__mini {
         width: 100%;
         height: 16px;
-        background-color: #C4C4C4;
+        background-color: $main-orange;
+        border-radius: 8px; /* Немного скругляем углы */
     }
-    &__block {
-        height: 35px;
-        width: 100%;
-        background-color: #C4C4C4;
-        margin-top: 15px;
-    }
+
+    
+
+    // &__block {
+    //     height: 35px;
+    //     width: 100%;
+    //     background-color: $main-orange;
+    //     margin-top: 15px;
+    //     border-radius: 8px; /* Скругляем углы */
+    // }
 }

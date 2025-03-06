@@ -1,5 +1,5 @@
 import './notFound.scss';
-import { Link } from 'react-router';  // Исправленный импорт
+import { Link } from 'react-router-dom';  // Исправленный импорт
 import ErrorMessage from '../errorMessage/ErrorMessage';
 
 const NotFound = () => {

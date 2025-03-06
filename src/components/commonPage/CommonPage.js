@@ -5,7 +5,7 @@ import ErrorMessage from '../errorMessage/ErrorMessage';
 import Spinner from '../spinner/Spinner';
 import xMen from '../../resources/img/x-men.png';
 import hero_banner from '../../resources/img/hero_banner.png'
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 
 const CommonPage = ({selectedElem}) => {

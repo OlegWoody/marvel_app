@@ -5,7 +5,7 @@ import { useState, useCallback, useEffect } from 'react'
 import MarvelService from '../../services/MarvelServices'
 import Spinner from '../spinner/Spinner'
 import ErrorMessage from '../errorMessage/ErrorMessage'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom';
 
 const CharInfo = ({selectForCommonPage, selectedId}) =>{
     // const marvelService = new MarvelService()
@@ -13,7 +13,7 @@ const CharInfo = ({selectForCommonPage, selectedId}) =>{
     // const [loading, setLoading] = useState(false)
     // const [error, setError] = useState(false)
     const [selected, setSelected] = useState(false)
-    const {getAllCharacters, getCharactersById, loading, error} = MarvelService()
+    const {getComicsByName, getCharactersById, loading, error} = MarvelService()
     const type='characters'
 
     
@@ -42,6 +42,12 @@ const CharInfo = ({selectForCommonPage, selectedId}) =>{
         // setLoading(false)
     }
 
+    const onClickComics = (name) =>{
+        // console.log(name)
+        getComicsByName(name)
+        .then((res)=>console.log(res))
+    }
+
     const InfoChar = ({char}) => {
         const {id,name,thumbnail,description,wiki, homepage, comics, objStyle } = char
         return(
@@ -67,7 +73,7 @@ const CharInfo = ({selectForCommonPage, selectedId}) =>{
                 <div className="char__comics">Comics:</div>
                 <ul className="char__comics-list">
                     {comics && comics.length > 0 ? comics.map(comic => (
-                    <li key={comic.name} className="char__comics-item">
+                    <li key={comic.name} onClick={(e)=>{onClickComics(comic.name)}} className="char__comics-item">
                         {comic.name}
                     </li>
                     )) : <li>No comics available</li>}
