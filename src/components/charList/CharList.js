@@ -7,7 +7,7 @@ import ErrorMessage from '../errorMessage/ErrorMessage'
 const CharList = ({selectForInfo, selectedChar}) => {
     const [char, setChar] = useState([])
     const [firstLoading, setFirstLoading] = useState(false)
-    const [offSet, setOffSet] = useState(210)
+    const [offSet, setOffSet] = useState(290)
     // const [activeChar, setActiveChar] = useState(null)
     const { getAllCharacters, loading, error } = MarvelService()
 

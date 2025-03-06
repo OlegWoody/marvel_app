@@ -3,7 +3,7 @@ import useRequest from "../hooks/http.hook";
 const _apiBase="https://gateway.marvel.com:443/v1/public";
 // const _apiComics="https://gateway.marvel.com:443/v1/public/characters";
 const _apiKey="apikey=4a1cee68a845fc20042b5dc8b9523728";
-const _baseOffSet=210;
+const _baseOffSet=290;
 
 // Заметка на 03+- число. Если не работает-проверить apibase.
 
