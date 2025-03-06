@@ -32,6 +32,7 @@
         &_selected {
             box-shadow: 0 5px 20px $main-color;
             transform: translateY(-8px);
+            opacity: 0.90;
         }
         &.char__item_animate {
             animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;

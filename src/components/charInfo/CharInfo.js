@@ -96,7 +96,7 @@ const CharInfo = ({selectForCommonPage, selectedId}) =>{
     const err = error ? <ErrorMessage/> : null
     const load = loading ? <Spinner/> : null;
     const skelet = selected ? null : skeleton()
-    const content = (!loading && selected) ? <InfoChar char={char}/> : null
+    const content = (!loading && selected && !error) ? <InfoChar char={char}/> : null
 
     return(    
         <div className="char__info">

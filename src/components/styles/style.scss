@@ -86,8 +86,8 @@ main {
         transform: scale(1);
     }
     50% {
-        opacity: 0.5;
-        transform: scale(1.05);
+        opacity: 0.4;
+        transform: scale(1.04);
     }
     100% {
         opacity: 1;
@@ -98,4 +98,3 @@ main {
 .pulse {
     animation: pulse 1.5s ease-in-out infinite;
 }
-
