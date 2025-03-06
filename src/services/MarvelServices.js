@@ -4,6 +4,8 @@ const _apiBase="https://gateway.marvel.com:443/v1/public";
 // const _apiComics="https://gateway.marvel.com:443/v1/public/characters";
 const _apiKey="apikey=4a1cee68a845fc20042b5dc8b9523728";
 const _baseOffSet=290;
+const _issueNumber=16
+
 
 // Заметка на 03+- число. Если не работает-проверить apibase.
 
@@ -28,6 +30,7 @@ const MarvelService = () =>{
 
     const getCharactersById = async (id, type='characters') =>{
             const res = await request(`${_apiBase}/${type}/${id}?${_apiKey}`)
+            console.log(res)
             if(type==='characters'){
                 return _transformChar(res.data.results[0])
             } else if(type==='comics'){
@@ -52,8 +55,11 @@ const MarvelService = () =>{
         return res.data.results.map(_transformComics);
     }
 
-    const getComicsByName = async (name) =>{
-        const res = await request(`${_apiBase}/comics?name=${name}&${_apiKey}`)   
+    const getComicsByName = async (name, issueNumber=_issueNumber) =>{
+        const encodedName = encodeURIComponent(name);
+        console.log(issueNumber)
+        const res = await request(`${_apiBase}/comics?title=${encodedName}&dateDescriptor=2006&issueNumber=${issueNumber}&${_apiKey}`)   
+        // console.log(res)
         if(res.data.count >= 1){
             return _transformComics(res.data.results[0])
         } else{

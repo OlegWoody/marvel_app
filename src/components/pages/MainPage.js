@@ -6,7 +6,7 @@ import Search from "../search/Search";
 import { useState } from "react";
 
 const MainPage = ({selectForCommonPage}) =>{
-    const [selectedChar, setSelectedChar] = useState('')
+    const [selectedChar, setSelectedChar] = useState(null)
   
     const selectForInfo = (id) =>{
         setSelectedChar(id)

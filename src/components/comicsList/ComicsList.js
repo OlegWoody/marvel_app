@@ -79,8 +79,8 @@ const ComicsList = ({selectForCommonPage}) => {
             </ul>
             {load}
             {err} 
-            <button onClick={()=>onComicsNew(offSet)} className="button button__main button__long">
-                <div className="inner">load more</div>
+            <button onClick={()=>onComicsNew(offSet)} disabled={loading} className="button button__main button__long">
+                <div className="inner" >load more</div>
             </button>
         </div>
     )
