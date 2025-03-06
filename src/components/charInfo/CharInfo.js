@@ -72,8 +72,8 @@ const CharInfo = ({selectForCommonPage, selectedId}) =>{
                 </div>
                 <div className="char__comics">Comics:</div>
                 <ul className="char__comics-list">
-                    {comics && comics.length > 0 ? comics.map(comic => (
-                    <li key={comic.name} onClick={(e)=>{onClickComics(comic.name)}} className="char__comics-item">
+                    {comics && comics.length > 0 ? comics.map((comic,index) => (
+                    <li key={index} onClick={()=>{onClickComics(comic.name)}} className="char__comics-item">
                         {comic.name}
                     </li>
                     )) : <li>No comics available</li>}
