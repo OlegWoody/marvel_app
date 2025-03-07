@@ -140,7 +140,7 @@ const CommonPage = ({selectedElem, selectForCommonPage}) => {
             return(
                 <>
                 <h2 className="common-page__name">{elem.name}</h2>
-                <Link to={`/${type}`} className="common-page__back">Back to all</Link>
+                <Link to={`/marvel_app`} className="common-page__back">Back to all</Link>
                 <div className='common-page__wrapper'>
                 <img src={elem.thumbnail} alt={elem.name} className="common-page__img"/>
                     <ul className='common-page__metadata'>
