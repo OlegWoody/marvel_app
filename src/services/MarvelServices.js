@@ -50,8 +50,8 @@ const MarvelService = () =>{
     }
 
     const getAllComics = async (offSet=_baseOffSet) =>{
+        console.log(offSet)
         const res = await request(`${_apiBase}/comics?limit=8&offset=${offSet}&${_apiKey}`);
-        console.log(res)
         return res.data.results.map(_transformComics);
     }
 
@@ -68,6 +68,7 @@ const MarvelService = () =>{
     }
 
     const _transformComics= (comics) =>{
+    console.log(comics)
     const date = new Date(comics.modified);
     const formattedModified = date.toLocaleDateString('en-CA');  
         // let objStyle = { objectFit: "cover" };
@@ -80,6 +81,10 @@ const MarvelService = () =>{
                 series: comics.series.name,
                 description: comics.description,
                 modified: formattedModified,
+                saleDate: comics.dates,
+                issueNumber: comics.issueNumber,
+                characters: comics.characters.items,
+                author: comics.creators.items,
                 // language: comics.language,
                 fullDescription: comics.description.length > 0 ? comics.description : "Here no descr",
                 // comics.description.length > 0 ? (comics.description.length > 170 ? comics.description.substring(0, 170) + "..." : comics.description) : "Here no descr",
@@ -97,7 +102,9 @@ const MarvelService = () =>{
 
 
     const _transformChar= (char) =>{
-        // console.log(char)
+        console.log(char)
+        const date = new Date(char.modified);
+        const formattedModified = date.toLocaleDateString('en-CA');  
         let objStyle = { objectFit: "cover" };
         if (char.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" || char.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708") {
             objStyle = { objectFit: "fill" };
@@ -112,6 +119,7 @@ const MarvelService = () =>{
                 homepage: char.urls[0].url,
                 wiki: char.urls[1].url,
                 comics: char.comics.items,
+                modified: formattedModified,
                 objStyle: objStyle
             }
         }

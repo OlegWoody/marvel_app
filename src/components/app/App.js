@@ -23,7 +23,7 @@ function App() {
         <Routes>
           <Route path="/marvel_app" element={<MainPage selectForCommonPage={selectForCommonPage} />} />
           <Route path="/comics" element={<ComicsList selectForCommonPage={selectForCommonPage} />} />
-          <Route path="/:type/:id" element={<CommonPage selectedElem={selectedElem} />} />
+          <Route path="/:type/:id" element={<CommonPage selectedElem={selectedElem} selectForCommonPage={selectForCommonPage}/>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

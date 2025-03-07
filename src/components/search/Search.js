@@ -91,7 +91,7 @@ const Search = ({selectForCommonPage}) => {
             </form>
             {content}
             {loading?<Spinner/>:null}
-            {error?<ErrorMessage/>:null}
+            {error?<Done/>:null}
 
             </div>
     );
