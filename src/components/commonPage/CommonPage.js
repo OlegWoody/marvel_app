@@ -107,9 +107,15 @@ const CommonPage = ({selectedElem, selectForCommonPage}) => {
                                         Click
                                     </a>
                                 </span>
-                                {elem.characters?.length > 0 && (
+                                {elem.characters?.length > 0 ? (
                                     <ul className={`common-page__metadata-first-char ${listStat ? 'open' : ''}`}>
                                         <CharList elementId={elem.characters} type='characters' />
+                                    </ul>
+                                ):(
+                                    <ul className={`common-page__metadata-first-char ${listStat ? 'open' : ''}`}>
+                                        <li className="common-page__metadata-first-char-item">
+                                            N/A
+                                        </li>
                                     </ul>
                                 )}
                             </li>
