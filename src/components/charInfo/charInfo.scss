@@ -3,6 +3,7 @@
 
     &__info {
         padding: 25px;
+        padding-top: 30px;
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
         position: relative;
         z-index: 5;
@@ -94,3 +95,66 @@
     }
 
 }
+
+.close__icon {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.15); /* Немного больше увеличение */
+        .close__path {
+            stroke: #e30b0b;
+            filter: drop-shadow(0 0 10px #e30b5d);
+            transition: transform 0.3s ease, stroke 0.3s ease;
+            animation: none;
+        }
+    }
+
+    .close__path {
+        animation: heartClose 3.3s ease-in-out infinite;
+        transition: transform 0.3s ease, stroke 0.3s ease; 
+    }
+}
+
+@keyframes heartClose {
+    0% {
+        transform: scale(1);
+        stroke: #9F0013; /* Темный красный */
+    }
+    25% {
+        transform: scale(1.05);
+        stroke: rgba(209, 0, 24, 0.692);/* Ярко-красный */
+    }
+    50% {
+        transform: scale(1.1);
+        stroke: #e30b0b; /* Яркий красный */
+    }
+    75% {
+        transform: scale(1.05);
+        stroke: rgba(209, 0, 24, 0.692); /* Ярко-красный */
+    }
+    100% {
+        transform: scale(1);
+        stroke: #9F0013; /* Темный красный */
+    }
+}
+
+// .close__icon{
+//     display: block;
+//     position: absolute;
+//     top: 7px;
+//     right: 7px;
+//     cursor: pointer;
+//     &:hover {
+//         transform: scale(1.1);
+//         .close__path{
+//             stroke: #e30b5d;
+//         }
+        
+//       }
+//     .close__path {
+//     transition: transform 0.3s ease, stroke 0.3s ease;
+//     }
+// }

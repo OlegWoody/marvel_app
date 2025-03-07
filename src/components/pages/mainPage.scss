@@ -1,0 +1,8 @@
+@use "../styles/variables" as *;
+
+.char__info__search {
+    position: sticky;
+    top: 20px; // Отступ сверху, чтобы не прилипал вплотную
+    align-self: flex-start; // Чтобы не растягивался, если flex-контейнер
+    z-index: 10; // Чтобы не перекрывался другими элементами
+}

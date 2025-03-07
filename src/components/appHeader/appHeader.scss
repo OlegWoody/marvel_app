@@ -51,20 +51,21 @@ input::-webkit-inner-spin-button {
         align-items: center;
         padding: 20px 30px;
         background: linear-gradient(135deg, $darked-blue, $dark, $darked-blue);
+        opacity: 0.90;
         // border-radius: 12px;
         border-bottom-left-radius: 12px;
         border-bottom-right-radius: 12px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(10px);
         position: relative;
-        z-index: 10;
+        z-index: 1000;
     }
     // $dark-grey-blue, $dark, $dark-grey-blue
   
     &__title {
         font-weight: bold;
         font-size: 28px;
-        line-height: 37px;
+        line-height: 28px;
         transition: transform 0.3s ease;
         &:hover {
         transform: scale(1.05);
@@ -84,14 +85,25 @@ input::-webkit-inner-spin-button {
             align-self: center;
         }
         &-text{
-            width: 105px;
+            width: 97px;
         }
         &-title{
-            color: $main-color;
+            // color: $main-color;
+            background: radial-gradient(circle, rgba(159,0,19,1) 0%, rgba(106,7,7,1) 50%, rgba(159,0,19,1) 100%);
+            // -webkit-background-clip: text;
+            // background-clip: text; 
+            color: white;  
+            padding: 3px 3px 3px 3px;
             justify-self: start;
         }
         &-sub{
             color: $main-orange;
+            justify-self: end;
+            font-size: 28px;
+            background: radial-gradient(circle, rgb(255, 0, 30) 0%, rgb(255, 0, 0) 50%, rgb(216, 11, 35) 100%);
+            // -webkit-background-clip: text;
+            background-clip: text; 
+            color: transparent;  
             justify-self: end;
         }
     }

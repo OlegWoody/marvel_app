@@ -3,10 +3,19 @@ import { NavLink } from 'react-router-dom';
 import Logo from '../logo/Logo';
 
 const AppHeader = () => {
+  const checkActiveComics = ({ isActive }) => {
+
+    if(isActive&&window.location.pathname === '/comics'){
+      return 'active'
+    }
+
+    return '';
+
+  }
   return (
     <header className="app__header">
       <h1 className="app__title">
-        <NavLink to="/marvel_app" className={({ isActive }) => isActive ? 'app__logo active' : 'app__logo'}>
+        <NavLink to="/marvel_app" className={"app__logo active"}>
           <span><Logo /></span>
           <div className="app__logo-text">
             <div className="app__logo-title">Marvel</div>
@@ -28,7 +37,7 @@ const AppHeader = () => {
           <li>
             <NavLink 
               to="/comics" 
-              className={({ isActive }) => isActive ? 'active' : ''}
+              className={checkActiveComics}
             >
               Comics
             </NavLink>

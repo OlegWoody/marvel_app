@@ -5,9 +5,10 @@ import { useState, useCallback, useEffect } from 'react'
 import MarvelService from '../../services/MarvelServices'
 import Spinner from '../spinner/Spinner'
 import ErrorMessage from '../errorMessage/ErrorMessage'
+import CloseIcon from '../closeIcon/CloseIcon'
 import { Link } from 'react-router-dom';
 
-const CharInfo = ({selectForCommonPage, selectedId}) =>{
+const CharInfo = ({selectForCommonPage, selectedId, selectForInfo}) =>{
     // const marvelService = new MarvelService()
     const [char, setChar] = useState({})
     // const [loading, setLoading] = useState(false)
@@ -47,12 +48,22 @@ const CharInfo = ({selectForCommonPage, selectedId}) =>{
         const comicsId = myId === null ? 0 : myId[1]
         selectForCommonPage(comicsId, 'comics')
     };
+
+    const handleClose = () => {
+        // Ваш код для обработки закрытия
+        setSelected(false)
+        setChar()
+        selectForInfo()
+    };
     
 
     const InfoChar = ({char}) => {
         const {id,name,thumbnail,description,wiki, homepage, comics, objStyle } = char
         return(
             <>
+                <div className="close-icon-wrapper" onClick={handleClose}>
+                    <CloseIcon />
+                </div>
                 <div className="char__basics">
                     <img src={thumbnail} alt={name} style={objStyle}/>
                     <div>
@@ -73,7 +84,7 @@ const CharInfo = ({selectForCommonPage, selectedId}) =>{
                 </div>
                 <div className="char__comics">Comics:</div>
                 <ul className="char__comics-list">
-                    {comics && comics.length > 0 ? comics.map((comic,index) => (
+                    {comics && comics.length > 0 ? comics.slice(0,10).map((comic,index) => (
                     <li key={index} onClick={()=>{onClickComics(comic.resourceURI)}} className="char__comics-item">
                         <Link to={`/comics/${comic.resourceURI.match(/(\d+)$/)?.[1]}`}>
                             {comic.name}

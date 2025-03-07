@@ -69,12 +69,10 @@ const CommonPage = ({selectedElem}) => {
     return (
         <div>
             <div className="common-page">
-                {/* {loading?<Spinner/>:null}
-                {error?<ErrorMessage/>:null} */}
                 {content}
+                {err}
+                {loading?<Spinner/>:null}
             </div>
-            {loading?<Spinner/>:null}
-            {err}
         </div>
     )
 }
