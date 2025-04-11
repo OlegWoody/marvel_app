@@ -43,7 +43,7 @@ main {
 
     &__subtitle {
         font-size: 18px;
-        color: $main-orange; /* светло-серый цвет */
+        color: $main-orange; 
     }
 
     &__block {
@@ -81,7 +81,7 @@ main {
             }
 
             &:hover {
-                box-shadow: 10px 0 10px rgba(255, 255, 255, 0.3);
+                box-shadow: -10px 0 10px rgba(255, 255, 255, 0.3);
             }
         }
 
@@ -89,7 +89,7 @@ main {
             align-self: center;
 
             &:hover {
-                box-shadow: -10px 0 10px rgba(255, 255, 255, 0.3);
+                box-shadow: 10px 0 10px rgba(255, 255, 255, 0.3);
             }
         }
 
@@ -110,7 +110,7 @@ main {
             &-static {
                 width: 180px;
                 height: 180px;
-                border: 3px solid #fff; /* Белый цвет */
+                border: 3px solid #fff; 
                 box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
                 border-radius: 50%;
             }
@@ -128,7 +128,7 @@ main {
     }
 
     .button {
-        color: #fff; /* Белый цвет */
+        color: #fff; 
         font-size: 18px;
         font-weight: bold;
         border-radius: 8px;

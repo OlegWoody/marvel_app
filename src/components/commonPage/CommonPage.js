@@ -17,12 +17,14 @@ const CommonPage = ({selectedElem, selectForCommonPage}) => {
     const [charId, setChar] = useState()
 
     useEffect(() => {
+        console.log("selectedElem:", selectedElem);
         setListStat(false);  
-        setElem(null);       // Сбрасываем только при изменении id
+        setElem(null);
         if (id && type) {
             onNewId(id, type);
         }
-    }, [id, type]);
+    }, [id]);
+    
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (listStat && !event.target.closest('.common-page__metadata-first-char')) {
@@ -38,14 +40,19 @@ const CommonPage = ({selectedElem, selectForCommonPage}) => {
     }, [listStat]);
 
     const onNewId = (id, type = 'characters') => {
-        if (id && type) {
+        console.log("Тут действие есть перед текущим елементом")
             getCharactersById(id, type)
-                .then(updateElem)
-                .catch(() => {});
-        }
+                .then((res)=>{
+                    console.log("Получен ответ:", res); 
+                    updateElem(res)})
+                .catch((error) => {
+                    console.error("Ошибка при получении данных:", error);  // Логируем ошибку
+                });
     }
 
     const updateElem = (elem) =>{
+        console.log("Текущий елемент:", elem)
+        console.log('Тек елеменет')
         setElem(elem);
     }
 
@@ -72,10 +79,12 @@ const CommonPage = ({selectedElem, selectForCommonPage}) => {
     };
 
     const View = ({elem, type}) =>{
-        if (!elem) return null;
+        // if (!elem) return null;
         if (type === 'comics') {
-            
-            // Проверка на наличие даты продажи
+            console.log(type)
+            console.log(elem)
+            console.log('1')
+
             let dateSale = elem.saleDate?.find(item => item.type === "onsaleDate")?.date || null;
             if (dateSale) {
                 dateSale = new Date(dateSale);
@@ -142,6 +151,7 @@ const CommonPage = ({selectedElem, selectForCommonPage}) => {
                 </>
             );
         } else if(type==='characters'){
+            console.log(type)
             console.log(elem)
             return(
                 <>
@@ -172,27 +182,13 @@ const CommonPage = ({selectedElem, selectForCommonPage}) => {
                     </div>
                     <div className="common-page__info">
                         <p className="common-page__descr">{elem.fullDescription}</p>
-                        {/* <p className="common-page__descr">Pages count: {elem.pageCount}</p> */}
-                        {/* <p className="common-page__descr">Language: {elem.language}</p> */}
                     </div>
                 </>
-                // <>
-                //     <img src={elem.thumbnail} alt={elem.name} className="common-page__img"/>
-                //     <div className="common-page__info">
-                //         <h2 className="common-page__name">{elem.name}</h2>
-                //         <p className="common-page__descr">{elem.fullDescription}</p>
-                //         {/* <p className="common-page__descr">144 pages</p> */}
-                //         {/* <p className="common-page__descr">Language: en-us</p> */}
-                //         {/* <div className="common-page__price">9.99$</div> */}
-                //     </div>
-                //     <Link to={`/marvel_app`} className="common-page__back">Back to all</Link>
-                // </>
             )
         }
     }
-
-    const content = elem && !(loading && error) ? <View elem={elem} type={type}/> : null
     const err = error ? <><Link to={`/marvel_app`} className="common-page__back">Back to all</Link><ErrorMessage/></>:null
+    const content = elem && !(loading || error) ? <View elem={elem} type={type}/> : err
     return (
         <div>
             <div className="common-page">

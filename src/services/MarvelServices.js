@@ -6,18 +6,15 @@ const _apiKey="apikey=4a1cee68a845fc20042b5dc8b9523728";
 const _baseOffSet=290;
 const _issueNumber=16
 
-
-// Заметка на 03+- число. Если не работает-проверить apibase.
-
 const MarvelService = () =>{
     const {request, error, loading} = useRequest()
 
 
 // 4a1cee68a845fc20042b5dc8b9523728
 // _apiBase='https://gateway.marvel.com:443/v1/public/characters';
-// Все, лимит 9: 
+// Усі, ліміт 9: 
 // https://gateway.marvel.com/v1/public/characters?limit=9&offset=210&apikey=729b5cdb5d9dcfb32ca407c6c566b080
-// By имя:
+// By ім'я:
 // https://gateway.marvel.com:443/v1/public/characters?name=ИМЯЯЯЯЯЯ&apikey=4a1cee68a845fc20042b5dc8b9523728
 // By id:
 //(`https://gateway.marvel.com:443/v1/public/characters/${id}?apikey=4a1cee68a845fc20042b5dc8b9523728`)
@@ -30,10 +27,10 @@ const MarvelService = () =>{
 
     const getCharactersById = async (id, type='characters') =>{
             const res = await request(`${_apiBase}/${type}/${id}?${_apiKey}`)
-            console.log(res)
             if(type==='characters'){
                 return _transformChar(res.data.results[0])
             } else if(type==='comics'){
+                console.log(res.data.results[0])
                 return _transformComics(res.data.results[0])
             } else {
                 return
@@ -50,16 +47,13 @@ const MarvelService = () =>{
     }
 
     const getAllComics = async (offSet=_baseOffSet) =>{
-        console.log(offSet)
         const res = await request(`${_apiBase}/comics?limit=8&offset=${offSet}&${_apiKey}`);
         return res.data.results.map(_transformComics);
     }
 
     const getComicsByName = async (name, issueNumber=_issueNumber) =>{
         const encodedName = encodeURIComponent(name);
-        console.log(issueNumber)
         const res = await request(`${_apiBase}/comics?title=${encodedName}&dateDescriptor=2006&issueNumber=${issueNumber}&${_apiKey}`)   
-        // console.log(res)
         if(res.data.count >= 1){
             return _transformComics(res.data.results[0])
         } else{
@@ -79,14 +73,14 @@ const MarvelService = () =>{
                 id: comics.id,
                 name: comics.title,
                 series: comics.series.name,
-                description: comics.description,
+                description: comics.description && comics.description.length > 0 ? comics.description : "The comic has no description",
                 modified: formattedModified,
                 saleDate: comics.dates,
                 issueNumber: comics.issueNumber,
                 characters: comics.characters.items,
                 author: comics.creators.items,
                 // language: comics.language,
-                fullDescription: comics.description.length > 0 ? comics.description : "The comic has no description",
+                fullDescription: comics.description && comics.description.length > 0  ? comics.description : "The comic has no description",
                 // comics.description.length > 0 ? (comics.description.length > 170 ? comics.description.substring(0, 170) + "..." : comics.description) : "Here no descr",
                 // fullDescription: comics.description.length > 0 ? comics.description : "Here no descr",
                 thumbnail: `${comics.thumbnail.path}.${comics.thumbnail.extension}`,

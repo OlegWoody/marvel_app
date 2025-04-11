@@ -1,16 +1,16 @@
 import './notFound.scss';
-import { Link } from 'react-router-dom';  // Исправленный импорт
+import { Link } from 'react-router-dom';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 
 const NotFound = () => {
     return (
         <div className="not-found-page">
             <div className="not-found-page__title">
-                404 — Link is not found
+                404 — Page Not Found
             </div>
             <ErrorMessage />
             <Link to="/marvel_app" className="not-found-page__back-button">
-                Back to all
+                Back to Site
             </Link>
         </div>
     );

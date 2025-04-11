@@ -13,6 +13,7 @@ function App() {
   const [selectedElem, setSelectedElem] = useState(null);
 
   const selectForCommonPage = (id, type = 'characters') => {
+    // setSelectedElem(null);
     setSelectedElem({ id, type });
   };
 

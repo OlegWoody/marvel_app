@@ -103,7 +103,7 @@
     right: 10px;
     cursor: pointer;
     &:hover {
-        transform: scale(1.15); /* Немного больше увеличение */
+        transform: scale(1.15);
         .close__path {
             stroke: #e30b0b;
             filter: drop-shadow(0 0 10px #e30b5d);
@@ -121,23 +121,23 @@
 @keyframes heartClose {
     0% {
         transform: scale(1);
-        stroke: #9F0013; /* Темный красный */
+        stroke: #9F0013; 
     }
     25% {
         transform: scale(1.05);
-        stroke: rgba(209, 0, 24, 0.692);/* Ярко-красный */
+        stroke: rgba(209, 0, 24, 0.692);
     }
     50% {
         transform: scale(1.1);
-        stroke: #e30b0b; /* Яркий красный */
+        stroke: #e30b0b; 
     }
     75% {
         transform: scale(1.05);
-        stroke: rgba(209, 0, 24, 0.692); /* Ярко-красный */
+        stroke: rgba(209, 0, 24, 0.692); 
     }
     100% {
         transform: scale(1);
-        stroke: #9F0013; /* Темный красный */
+        stroke: #9F0013;
     }
 }
 

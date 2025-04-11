@@ -50,7 +50,6 @@ const CharInfo = ({selectForCommonPage, selectedId, selectForInfo}) =>{
     };
 
     const handleClose = () => {
-        // Ваш код для обработки закрытия
         setSelected(false)
         setChar()
         selectForInfo()
